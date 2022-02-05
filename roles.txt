@@ -1,0 +1,22 @@
+Coding
+	Visualization generator
+		- At least 3 types of visualizations
+		- Random datapoints, select two for comparison
+		- Simple style
+
+	Interactive part (the part the participants see)
+		- similar to the video, but UI can be different
+		- show viualizations in a random order, call Visualization generator code to generate them
+		- call Response storage code
+
+	Response storage
+		- respondent's percent, actual percent, some metadata about the graphs
+
+	Visualize results
+		- error scaling
+		- rank charts
+		- confidence intervals
+
+Get participants
+
+Writeup (README)
