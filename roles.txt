@@ -1,18 +1,22 @@
 Coding
 	Visualization generator
+		(probably mostly in d3)
 		- At least 3 types of visualizations
 		- Random datapoints, select two for comparison
 		- Simple style
 
 	Interactive part (the part the participants see)
+		(probably mostly in HTML / JavaScript)
 		- similar to the video, but UI can be different
 		- show viualizations in a random order, call Visualization generator code to generate them
 		- call Response storage code
 
 	Response storage
+		(probably mostly in JavaScript)
 		- respondent's percent, actual percent, some metadata about the graphs
 
 	Visualize results
+		(could be in d3, R, or something else)
 		- error scaling
 		- rank charts
 		- confidence intervals
