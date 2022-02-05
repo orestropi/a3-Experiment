@@ -1,26 +1,32 @@
-Coding
-	Visualization generator
+
+There are 5 tasks (not counting Get Participants) but 4 people, so someone will have to double up.
+All Coding tasks except Visualize Results need to be done before we can run the experiment.
+Please inform the rest of the team which task(s) you are working on.
+
+
+Coding tasks:
+	Visualization Generator
 		(probably mostly in d3)
 		- At least 3 types of visualizations
 		- Random datapoints, select two for comparison
 		- Simple style
 
-	Interactive part (the part the participants see)
+	Interactive (the part the participants see)
 		(probably mostly in HTML / JavaScript)
 		- similar to the video, but UI can be different
-		- show viualizations in a random order, call Visualization generator code to generate them
-		- call Response storage code
+		- show visualizations in a random order, call Visualization Generator code to generate them
+		- call Response Storage code
 
-	Response storage
+	Response Storage
 		(probably mostly in JavaScript)
 		- respondent's percent, actual percent, some metadata about the graphs
 
-	Visualize results
+	Visualize Results
 		(could be in d3, R, or something else)
 		- error scaling
 		- rank charts
 		- confidence intervals
 
-Get participants
+Get Participants - Everyone
 
 Writeup (README)
