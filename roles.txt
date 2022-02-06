@@ -3,8 +3,7 @@ There are 5 tasks (not counting Get Participants) but 4 people, so someone will 
 All Coding tasks except Visualize Results need to be done before we can run the experiment.
 Please inform the rest of the team which task(s) you are working on.
 
-
-Coding tasks:
+Pre collection:
 	Visualization Generator
 		(probably mostly in d3)
 		- At least 3 types of visualizations
@@ -21,12 +20,13 @@ Coding tasks:
 		(probably mostly in JavaScript)
 		- respondent's percent, actual percent, some metadata about the graphs
 
-	Visualize Results
+Get Participants - Everyone
+
+Post collection:
+	Data visualization
 		(could be in d3, R, or something else)
 		- error scaling
 		- rank charts
 		- confidence intervals
 
-Get Participants - Everyone
-
-Writeup (README)
+	Writeup
