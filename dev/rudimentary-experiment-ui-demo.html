@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>Data Visualization Experiment Sample Page</title>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+	
+<body>
+
+<div id="chart">
+	<svg> </svg> <!-- Modify this using d3 -->
+</div>
+
+
+<div id="contentarea">
+
+
+<script type="text/javascript">
+
+function generateRandomChart() {
+// TODO replace with actual random chart generator (which could be its own .js file)
+	const svg = d3.select("svg")
+		.attr("width", 100)
+		.attr("height",120)
+		.attr("viewBox", [0,0,100,120]);
+	
+	const box = svg.selectAll("image").data([0]).join("image")
+		.attr("x", "0")
+		.attr("y", "0")
+		.attr("width", "100")
+		.attr("height", "100")
+		.attr("href", "https://mario.wiki.gallery/images/4/43/PMTTYD_Vivian_Main_Artwork.png");
+	
+	return 0;
+}
+var actualPercentDiff = generateRandomChart(); // Implementation may need to be different
+var userPercentDiff = -1000;
+
+function saveData(f) {
+	userPercentDiff = f.userpercent.value;
+	var newline = document.createElement("p");
+	newline.innerHTML = "Actual percent: " + actualPercentDiff + ", Entered percent: " + userPercentDiff;
+	document.body.appendChild(newline);
+}
+
+function onButtonPress(f) {
+	saveData(f);
+	actualPercentDiff = generateRandomChart();
+}
+
+</script>
+
+<p> What (approximate) percent of the red area is the yellow area? </p>
+<p> Enter your answer below </p>
+
+<form name="s" action="javascript:void(null)">
+
+<textarea name="userpercent" cols="10" rows="1"></textarea><br/>
+
+<input type="button" value="Enter" onclick="onButtonPress(this.form)"/><br/>
+
+</form>
+
+<p> Entered results: </p>
+
+</div>
+
+</body>
+
+</html>
