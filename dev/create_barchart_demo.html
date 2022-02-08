@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> bar chart </title>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1> Hi! </h1>
+		<p class="desc"> The bar chart below is filled with random values! </p>
+	</header>
+	
+	<div id="vis">
+		<svg width="150" height="150"> </svg>
+	
+	<script type="text/javascript">
+	
+	const svg = d3.select("svg");
+	
+	
+	function create_dataset() {
+		return [
+			Math.random() * 100,
+			Math.random() * 100,
+			Math.random() * 100,
+			Math.random() * 100,
+			Math.random() * 100
+		];
+	}
+	
+	var datas = create_dataset();
+	
+	function remove_chart() {
+		// Credit: Nux's comment on https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
+		
+		svg.selectAll("*").remove();
+	}
+	
+	/* This is the most important function in this document. 
+	   The others are there to provide an interactive demo,
+	   but some of them may be useful in the final product.
+	 */
+	function create_barchart(datas) {
+		const svg_height = 150;
+		const left_border = 40;
+		const bottom_border = 20;
+		const top_border = 20;
+		const right_border = 20;
+		const bar_width = 10;
+		const bar_spacing = 5;
+		const bar_count = 5;
+		
+		let y_scale = d3.scaleLinear().domain([0, 100]).range([svg_height - top_border - bottom_border, 0]).nice();
+		
+		let first_selected_value = Math.floor(Math.random() * bar_count);
+		let second_selected_value = Math.floor(Math.random() * bar_count);
+		while (second_selected_value == first_selected_value)
+		{
+			second_selected_value = Math.floor(Math.random() * bar_count);
+		}
+	
+		const point = svg.selectAll("rect").data(datas).join("rect")
+			.style("stroke", "black" )
+			.style("fill", (d,i) => {
+				if(i == first_selected_value)
+				{
+					return "red";
+				}
+				else if(i == second_selected_value)
+				{
+					return "yellow";
+				}
+				else
+				{
+					return "white";
+				}
+			})
+			.attr("x", (d,i) => (left_border + bar_width * i + bar_spacing * (i + 1)) )
+			.attr("y", (d) => (top_border + y_scale(100-d)) )
+			.attr("width", (d) => bar_width )
+			.attr("height", (d) => y_scale(d));
+
+		var yaxis = d3.axisLeft(y_scale).ticks(1).tickFormat(d => "");
+		svg.append("g").attr("transform", "translate(" + left_border + ", " + top_border + ")").call(yaxis);
+	}
+	
+	function regen_chart() {
+		datas = create_dataset();
+		remove_chart();
+		create_barchart(datas);
+	}
+	
+	create_barchart(datas);
+	console.log("Script finished");
+	
+	</script>
+	
+	<form name="uwu" action="javascript:void(null)">
+
+	<input type="button" value="Gimme another!" onclick="regen_chart()"/><br/>
+
+	</form>
+
+	</div>
+	
+	
+</body>
+</html>
