@@ -1,13 +1,92 @@
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<html>
+<head>
+	<title>Data Visualization Experiment Sample Page</title>
+	<script src="https://d3js.org/d3.v4.js"></script>
+	
+</head>
 
-
-<style>
-</style>
 
 <body>
-  <h1> Experiment </h1>
-</body>
+	<h1 id='questionNum' class = "center">CS 480x Survey</h1>
+	<div id='explanation' margin='auto' class = "center">
+		<header>
+		This is a study survey for an assignment 3 for CS 480x. <br>
+		In this survey you will be asked to estimate the relative sizes of parts of various figures. <br>
+		There will be 30 questions: 10 with pie charts, 10 with boxplots, and 10 with barcharts. <br>
+		Ir should take at most 10 minutes to complete. <br>
+		Click the Start button to begin.
+		</header>
+	</div>
+	<div class = "center">
 
-<script>
-  console.log(d3); // test if d3 is loaded
-</script>
+  	<div id='plot'></div>
+  	<header id='message'></header>
+	
+
+	<button id='START' onclick='startTest()'>Start</button>
+
+  	<input id='INPUT' style="display:none" type='number' min='0.01' max='0.99' step='0.01'>
+  	<button id='SUBMIT' style="display:none" onclick='submit()'>Submit</button>
+  	<div id='error' style='color:red'></div>
+  	<form style="display:none" id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/mgepbqny" method="post">
+		<textarea id="testdata" style="display:none;" name="data"  required=""></textarea>
+		<input type="submit" value="Finish Survey" onclick='finish()'>
+	</form>
+	</div>
+
+<!-- <script type="text/javascript">
+
+function generateRandomChart() {
+// TODO replace with actual random chart generator (which could be its own .js file)
+	const svg = d3.select("svg")
+		.attr("width", 100)
+		.attr("height",120)
+		.attr("viewBox", [0,0,100,120]);
+	
+	const box = svg.selectAll("image").data([0]).join("image")
+		.attr("x", "0")
+		.attr("y", "0")
+		.attr("width", "100")
+		.attr("height", "100")
+		.attr("href", "https://mario.wiki.gallery/images/4/43/PMTTYD_Vivian_Main_Artwork.png");
+	
+	return 0;
+}
+var actualPercentDiff = generateRandomChart(); // Implementation may need to be different
+var userPercentDiff = -1000;
+
+function saveData(f) {
+	userPercentDiff = f.userpercent.value;
+	var newline = document.createElement("p");
+	newline.innerHTML = "Actual percent: " + actualPercentDiff + ", Entered percent: " + userPercentDiff;
+	document.body.appendChild(newline);
+}
+
+function onButtonPress(f) {
+	saveData(f);
+	actualPercentDiff = generateRandomChart();
+}
+
+</script> -->
+<!-- 
+<p> What (approximate) percent of the red area is the yellow area? </p>
+<p> Enter your answer below </p>
+
+<form name="s" action="javascript:void(null)">
+
+<textarea name="userpercent" cols="10" rows="1"></textarea><br/>
+
+<input type="button" value="Enter" onclick="onButtonPress(this.form)"/><br/>
+
+</form>
+
+<p> Entered results: </p> -->
+
+</body>
+	
+<script src="./js/boxplot.js"></script>
+<script src="./js/barchart.js"></script>
+<script src="./js/piechart.js"></script>
+<script src='./js/test.js'></script>
+
+</html>
