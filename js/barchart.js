@@ -29,18 +29,7 @@ function create_barchart(datas) {
     const point = svg.selectAll("rect").data(dataset).join("rect")
         .style("stroke", "black" )
         .style("fill", (d,i) => {
-            /*if(i == first_selected_value)
-            {
-                return "red";
-            }
-            else if(i == second_selected_value)
-            {
-                return "yellow";
-            }
-            else
-            {*/
-                return "white";
-            //}
+            return "white";
         })
         .attr("x", (d,i) => (left_border + bar_width * i + bar_spacing * (i + 1)) )
         .attr("y", (d) => (top_border + y_scale(100-d)) )
@@ -48,14 +37,14 @@ function create_barchart(datas) {
         .attr("height", (d) => y_scale(d));
 	
     // Code copied from boxplot.js to replace color coding with dots
-    svg.selectAll('selectionDots')
-		.data([first_selected_value, second_selected_value])
-		.enter()
-		.append("circle")
-			.attr("cx", d => (left_border + bar_width * 1.5 * d + bar_spacing * (i + d)) )
-			.attr("cy", svg_height + bottom_border/2 )
-			.attr("r", 5 )
-			.style("fill", 'black' );
+    svg.selectAll("circle")
+	.data([first_selected_value, second_selected_value])
+	.enter()
+	.append("circle")
+	.attr("cx", d => (left_border + 5 + bar_width * d + bar_spacing * (d + 1)) )
+	.attr("cy", svg_height - bottom_border/2 )
+	.attr("r", 5 )
+	.style("fill", 'black' );
 
     var yaxis = d3.axisLeft(y_scale).ticks(1).tickFormat(d => "");
     svg.append("g").attr("transform", "translate(" + left_border + ", " + top_border + ")").call(yaxis);
