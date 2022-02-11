@@ -16,21 +16,26 @@
 		let svg = d3.select("svg");
 		let colorSet = ["#FF0000","#0000FF","#f2f2f2","#e2e2e2","#cecece",
 				"#b4b4b4","#979797","#7a7a7a","#5f5f5f","#404040"];
+		let data = [];
+		let trial_num = 0;
+		let vis_type = "";
+		let trials = {};
 		function make_data()
 		{
 			let count = Math.floor(6 * Math.random() + 5);
-			console.log("count = %i", count);
+			//console.log("count = %i", count);
 			data = [count];
-			for(i = 0 ; i < count ; i++) { data[i] = 25 + Math.floor(Math.random() * 75); }
-			console.log(data);
+			for(i = 0 ; i < count ; i++) { data[i] = 15 + Math.floor(Math.random() * 85); }
+			//console.log(data);
 			return data;
 		}
 		function remove_chart()
 		{
 			svg.selectAll("*").remove();
 		}
-		function create_chart(data)
+		function create_pie_chart(data)
 		{
+			vis_type = "Pie";
 			var svg = d3.select("svg");
 			let g = svg.append("g").attr("transform","translate(75,75)");
 			var pie = d3.pie();
@@ -43,23 +48,43 @@
 				.style("stroke-width", 2)
 				.attr("d", arc);
 		}
+		function calculate_ans()
+		{
+			let val1 = data[0];
+			let val2 = data[1];
+			let answer = 100;
+			if( val1 > val2 ) { answer = Math.floor( 100 * val2 / val1 ); }
+			if( val2 > val1 ) { answer = Math.floor( 100 * val1 / val2 ); }
+			return answer;
+		}
+		function submit_vals(input)
+		{
+			trials[trial_num] = {};
+			trials[trial_num]["TrialNum"] = (trial_num + 1);
+			trials[trial_num]["Vis"] = vis_type;
+			trials[trial_num]["TruePercent"] = calculate_ans();
+			trials[trial_num]["ReportedPercent"] = input;
+			trial_num++;
+		}
 		function new_chart()
 		{
-			let data = make_data();
+			let input = document.getElementById("input");
+			if(data.length > 0 && input.value.length > 0)
+			{
+				submit_vals(input.value);
+				document.getElementById("input").value = '';
+			}
 			remove_chart();
-			create_chart(data);
-		}
-		function submit()
-		{
-			new_chart();
+			data = make_data();
+			create_pie_chart(data);
 		}
 		new_chart();
 	</script>
-	<br/>
-	<label for="input">Input:</label>
-	<input type="text" id="input" name="input">
+	<br><br>
 	<form name="input" action="javascript:void(null)">
-	<input type="button" value="Submit" onclick="submit()"/><br/>
+		<label for="input">Input:</label>
+		<input type="text" id="input" name="input">
+		<input type="submit" value="Submit" onclick="new_chart()"/><br/>
 	</form>
 	</div>
 </body>
