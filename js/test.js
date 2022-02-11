@@ -23,7 +23,7 @@ function getRandomArray(n) {
 let tests = [
 	[() => generatePieChart(), 'What percentage of size is slice one of slice two?<br>(e.g. enter 50 if the smaller slice is half the size of the larger slice)', 'Piechart'],
 	[() => generateBoxPlot(), 'What percentage of size is the smaller dotted boxplot of the larger dotted boxplot (including the tails)?<br>(e.g. enter 50 if the smaller boxplot is half the size of the larger boxplot)', 'Boxplot'],
-	[() => create_barchart, 'What percentage of size is the smaller dotted bar of the larger dotted bar?<br>(e.g. enter 50 if the smaller bar is half the size of the larger bar)', 'Barchart'],
+	[() => create_barchart(), 'What percentage of size is the smaller dotted bar of the larger dotted bar?<br>(e.g. enter 50 if the smaller bar is half the size of the larger bar)', 'Barchart'],
 ]
 
 function stringify(matr) {
