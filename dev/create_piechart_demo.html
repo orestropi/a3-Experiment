@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> pie chart </title>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+	<header>
+		<h2> Two values in the graph have color. </h2>
+		<h2> What do you think the percent of the smaller value to the larger value is? </h2>
+		<h3> e.g. If you think the smaller one is exactly 1/2 of the bigger one, input "50" </h3>
+	</header>
+	<div id ="vis">
+		<svg width="150" height="150" radius="70"> </svg>
+	<script type="text/javascript">
+		let svg = d3.select("svg");
+		let colorSet = ["#FF0000","#0000FF","#f2f2f2","#e2e2e2","#cecece",
+				"#b4b4b4","#979797","#7a7a7a","#5f5f5f","#404040"];
+		function make_data()
+		{
+			let count = Math.floor(6 * Math.random() + 5);
+			console.log("count = %i", count);
+			data = [count];
+			for(i = 0 ; i < count ; i++) { data[i] = 25 + Math.floor(Math.random() * 75); }
+			console.log(data);
+			return data;
+		}
+		function remove_chart()
+		{
+			svg.selectAll("*").remove();
+		}
+		function create_chart(data)
+		{
+			var svg = d3.select("svg");
+			let g = svg.append("g").attr("transform","translate(75,75)");
+			var pie = d3.pie();
+			var arc = d3.arc().innerRadius(0).outerRadius(70);
+			var arcs = g.selectAll("arc").data(pie(data)).enter().append("g");
+			arcs.append("path").attr("fill", function(data, i) {
+				let value = data.data;
+				return colorSet[i]; })
+				.style("stroke", "black")
+				.style("stroke-width", 2)
+				.attr("d", arc);
+		}
+		function new_chart()
+		{
+			let data = make_data();
+			remove_chart();
+			create_chart(data);
+		}
+		function submit()
+		{
+			new_chart();
+		}
+		new_chart();
+	</script>
+	<br/>
+	<label for="input">Input:</label>
+	<input type="text" id="input" name="input">
+	<form name="input" action="javascript:void(null)">
+	<input type="button" value="Submit" onclick="submit()"/><br/>
+	</form>
+	</div>
+</body>
+</html>
