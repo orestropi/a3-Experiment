@@ -2,7 +2,9 @@
 <html>
 <head>
 	<title> pie chart </title>
-	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<link href="style.css" rel="stylesheet">
+	<script src="https://d3js.org/d3.v4.min.js"></script> <!-- Changed to d3 version 4 to stop boxplot.js from breaking. -->
+	<script src="../js/boxplot.js"></script>
 </head>
 <body>
 	<header>
@@ -11,7 +13,7 @@
 		<h3> e.g. If you think the smaller one is exactly 1/2 of the bigger one, input "50" </h3>
 	</header>
 	<div id ="vis">
-		<svg width="300" height="300" radius="140"> </svg>
+		<svg width="300" height="300" radius="140" id="plot"> </svg>
 	<script type="text/javascript">
 		let svg = d3.select("svg");
 		let colorSet = ["#FF0000","#0000FF","#f2f2f2","#e2e2e2","#cecece",
@@ -92,10 +94,10 @@
 			}
 			remove_chart();
 			data = make_data();
-			let decider = Math.floor(Math.random() * 2); //update this to be * 3 when we have box plot in here
+			/*let decider = Math.floor(Math.random() * 3); //update this to be * 3 when we have box plot in here
 			if( decider == 0 ) { create_pie_chart(data); }
 			if( decider == 1 ) { create_bar_chart(data); }
-            //if( decider == 2 ) { create_box_plot(data); } uncomment when box plots are implemented
+            if( decider == 2 ) {*/ generateBoxPlot(data); //} //uncomment when box plots are implemented
 		}
 		new_chart();
 	</script>
