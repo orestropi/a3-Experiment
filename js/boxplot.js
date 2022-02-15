@@ -1,7 +1,12 @@
+
 //wrong d3 version d3 v4
 //referenced https://www.d3-graph-gallery.com/boxplot
-function generateBoxPlot(minplots = 5, maxplots = 10) {
-	let plotcount = Math.floor(Math.random() * (maxplots+1-minplots)) + minplots;
+
+console.log("hi");
+
+function generateBoxPlot(data) {
+	
+	let plotcount = data.length; /*/Math.floor(Math.random() * (maxplots+1-minplots)) + minplots;/**/
 	let firstInd = Math.floor(Math.random() * plotcount);
 	let targets = [firstInd, firstInd];
 	while (targets[0] == targets[1]) {
@@ -12,8 +17,8 @@ function generateBoxPlot(minplots = 5, maxplots = 10) {
 	let margin = {top: 25, right: 25, bottom: 25, left: 25};
 	let width = (75*plotcount) - margin.left - margin.right;
 	let height = 500 - margin.top - margin.bottom;
-	let svg = d3.select("#plot")
-		.append("svg")
+	let svg = d3.select("svg") /*svg = d3.select("#plot")
+		.append("svg")*/
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
 		.append("g")
@@ -21,18 +26,38 @@ function generateBoxPlot(minplots = 5, maxplots = 10) {
 
 
 	// create data
-	let dataset = [];
+	let dataset = /*[];
 	for (let i = 0; i < plotcount; i++) {
 		dataset.push(getRandomArray(5));
-	}
+	}/*/data;/**/
 
-	let c = 0
+	let c = 0;
     
-    // Compute quartiles, median, inter quantile range min and max --> these info are then used to draw the box.
+	
+	/* Converted to use d3.rollup() instead of the deprecated d3.nest()
+	// thx https://observablehq.com/@d3/d3v6-migration-guide
+	var sumstat = d3.rollup(dataset, function(d) {
+			let sorted = d.sort(d3.ascending);
+			let q1 = d3.quantile(sorted, .25);
+			let median = d3.quantile(sorted, .5);
+			let q3 = d3.quantile(sorted, .75);
+			let min = sorted[0];
+			let max = sorted[sorted.length-1];
+			return({q1: q1, median: median, q3: q3, min: min, max: max, range: max-min, iqr: q3-q1})
+		}, () => c++);
+		
+	console.log(sumstat);
+	console.log(sumstat[0]);
+	console.log(sumstat[1]);
+	console.log(sumstat[2]);
+	console.log(sumstat[3]);
+	console.log(sumstat[4]);
+	/**/
+    //* Compute quartiles, median, inter quantile range min and max --> these info are then used to draw the box.
 	var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
 		.key(() => c++)
 		.rollup(function(d) {
-			let sorted = d[0].sort(d3.ascending);
+			let sorted = d.sort(d3.ascending);
 			let q1 = d3.quantile(sorted, .25);
 			let median = d3.quantile(sorted, .5);
 			let q3 = d3.quantile(sorted, .75);
@@ -40,7 +65,7 @@ function generateBoxPlot(minplots = 5, maxplots = 10) {
 			let max = sorted[sorted.length-1];
 			return({q1: q1, median: median, q3: q3, min: min, max: max, range: max-min, iqr: q3-q1})
 		})
-		.entries(dataset)
+		.entries(dataset)/**/
 	let y = d3.scaleLinear()
 	  .domain([-0.05,1])
 	  .range([height, 0]);
