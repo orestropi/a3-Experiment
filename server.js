@@ -27,7 +27,6 @@ mongoose.connect(
 // use express.urlencoded to get data sent by defaut form actions
 // or GET requests
 app.use( express.urlencoded({ extended:true }) )
-app.use( express.urlencoded({ extended:true }) )
 app.use(express.static('./'))
 
 //Middleware
