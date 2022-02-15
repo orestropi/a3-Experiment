@@ -44,7 +44,7 @@ app.get("/", (request, response) => {
 
 
 //Route Middleware
-app.use('/api/user', app);
+//app.use('/api/user', app);
 
 // // send the default array of dreams to the webpage
 // app.get("/dreams", (request, response) => {
