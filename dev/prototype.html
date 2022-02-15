@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> pie chart </title>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+	<header>
+		<h2> Two values in the graph have color. </h2>
+		<h2> What do you think the percent of the smaller value to the larger value is? </h2>
+		<h3> e.g. If you think the smaller one is exactly 1/2 of the bigger one, input "50" </h3>
+	</header>
+	<div id ="vis">
+		<svg width="300" height="300" radius="140"> </svg>
+	<script type="text/javascript">
+		let svg = d3.select("svg");
+		let colorSet = ["#FF0000","#0000FF","#f2f2f2","#e2e2e2","#cecece",
+				        "#b4b4b4","#979797","#7a7a7a","#5f5f5f","#404040"];
+		let data = [];
+		let trial_num = 0;
+		let vis_type = "";
+		let trials = {};
+		function make_data()
+		{
+			let count = Math.floor(6 * Math.random() + 5);
+			data = [count];
+			for(i = 0 ; i < count ; i++) { data[i] = 15 + Math.floor(Math.random() * 85); }
+			return data;
+		}
+		function remove_chart()
+		{
+			svg.selectAll("*").remove();
+		}
+		function create_pie_chart(data)
+		{
+			vis_type = "Pie";
+			var svg = d3.select("svg");
+			let g = svg.append("g").attr("transform","translate(150,150)");
+			var pie = d3.pie();
+			var arc = d3.arc().innerRadius(0).outerRadius(140);
+			var arcs = g.selectAll("arc").data(pie(data)).enter().append("g");
+			arcs.append("path").attr("fill", function(data, i) {
+				let value = data.data;
+				return colorSet[i]; })
+				.style("stroke", "black")
+				.style("stroke-width", 2)
+				.attr("d", arc);
+		}
+		function create_bar_chart(data)
+		{
+			vis_type = "Bar";
+			let y_scale = d3.scaleLinear().domain([0, 100]).range([220, 0]).nice();
+			const point = svg.selectAll("rect").data(data).join("rect")
+				.style("stroke", "black")
+				.attr("fill", function(d, i) { return colorSet[i]; })
+				.attr("x", function(d, i) { return 80 + 20 * i + 10 * (i + 1); })
+				.attr("y", function(d) { return 40 + y_scale(100 - d); })
+				.attr("width", 20)
+				.attr("height", function(d) { return y_scale(d); });
+			var y_axis = d3.axisLeft(y_scale).ticks(1).tickFormat(d => "");
+			svg.append("g").attr("transform", "translate(80,40)").call(y_axis);
+		}
+        function create_box_plot(data)
+        {
+            //placeholder for now
+        }
+		function calculate_ans()
+		{
+			let val1 = data[0];
+			let val2 = data[1];
+			let answer = 100;
+			if( val1 > val2 ) { answer = Math.floor( 100 * val2 / val1 ); }
+			if( val2 > val1 ) { answer = Math.floor( 100 * val1 / val2 ); }
+			return answer;
+		}
+		function submit_vals(input)
+		{
+			trials[trial_num] = {};
+			trials[trial_num]["TrialNum"] = (trial_num + 1);
+			trials[trial_num]["Vis"] = vis_type;
+			trials[trial_num]["TruePercent"] = calculate_ans();
+			trials[trial_num]["ReportedPercent"] = input;
+			trial_num++;
+		}
+		function new_chart()
+		{
+			let input = document.getElementById("input");
+			if(data.length > 0 && input.value.length > 0)
+			{
+				submit_vals(input.value);
+				document.getElementById("input").value = '';
+			}
+			remove_chart();
+			data = make_data();
+			let decider = Math.floor(Math.random() * 2); //update this to be * 3 when we have box plot in here
+			if( decider == 0 ) { create_pie_chart(data); }
+			if( decider == 1 ) { create_bar_chart(data); }
+            //if( decider == 2 ) { create_box_plot(data); } uncomment when box plots are implemented
+		}
+		new_chart();
+	</script>
+	<br><br>
+	<form name="input" action="javascript:void(null)">
+		<label for="input">Input:</label>
+		<input type="text" id="input" name="input">
+		<input type="submit" value="Submit" onclick="new_chart()"/><br/>
+	</form>
+	</div>
+</body>
+</html>
