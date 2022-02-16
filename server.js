@@ -7,7 +7,7 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const dotenv =  require('dotenv');
-const Data = require('/model/Data');
+const Data = require('./model/Data');
 
 
 // make all the files in 'views' available

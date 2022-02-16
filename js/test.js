@@ -44,6 +44,7 @@ function nextTrial(test, message) {
 }
 
 function submit() {
+	sendData();
 	if (input.value <= 0 || input.value >= 100) {
 		errorP.innerHTML = "Invalid input. Answer must be a decimal between 0 and 1";
 		input.value = '';
