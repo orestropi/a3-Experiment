@@ -99,6 +99,23 @@
 		}
 		new_chart();
 	</script>
+	<script>
+		function sendData(participantID, trialN, chartType, actualPercent, enteredPercent) {
+	json = { participantID: participantID, trialN: trialN, chartType: chartType, actualPercent: actualPercent, enteredPercent: enteredPercent},
+	body = JSON.stringify(json);
+fetch('/newData', {
+	   method: 'POST',
+	   headers: {
+			   'Accept': 'application/json, text/plain, */*',
+			   'Content-Type': 'application/json'
+			 },
+	   body: body
+	 })
+	 .then(res => res) // parse the JSON from the server
+	 .then(data => {
+	   });
+}
+	</script>
 	<br><br>
 	<form name="input" action="javascript:void(null)">
 		<label for="input">Input:</label>
