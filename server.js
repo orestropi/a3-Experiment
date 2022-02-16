@@ -39,7 +39,7 @@ var bodyParser = require('body-parser')
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/dev/prototype.html");
+  response.sendFile(__dirname + "/index.html");
 });
 
 
