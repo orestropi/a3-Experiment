@@ -44,7 +44,7 @@ function nextTrial(test, message) {
 }
 
 function submit() {
-	sendData();
+	sendData('test', 1, 'test3', 2, 3);
 	if (input.value <= 0 || input.value >= 100) {
 		errorP.innerHTML = "Invalid input. Answer must be a decimal between 0 and 1";
 		input.value = '';
@@ -81,8 +81,8 @@ function startTest() {
 	nextTrial(tests[testver][0], tests[testver][1]);
 }
 
-function sendData() {
-	json = { participantID: 'test', trialN: 1, chartType: 'test3', actualPercent: 2, enteredPercent: 3},
+function sendData(participantID, trialN, chartType, actualPercent, enteredPercent) {
+	json = { participantID: participantID, trialN: trialN, chartType: chartType, actualPercent: actualPercent, enteredPercent: enteredPercent},
 	body = JSON.stringify(json);
 fetch('/newData', {
 	   method: 'POST',
