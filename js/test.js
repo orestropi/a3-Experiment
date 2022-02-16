@@ -80,6 +80,23 @@ function startTest() {
 	nextTrial(tests[testver][0], tests[testver][1]);
 }
 
+function sendData() {
+	json = { participantID: 'test', trialN: 1, chartType: 'test3', actualPercent: 2, enteredPercent: 3},
+	body = JSON.stringify(json);
+fetch('/newData', {
+	   method: 'POST',
+	   headers: {
+			   'Accept': 'application/json, text/plain, */*',
+			   'Content-Type': 'application/json'
+			 },
+	   body: body
+	 })
+	 .then(res => res) // parse the JSON from the server
+	 .then(data => {
+	   });
+}
+
+
 function finish() {
 	qnum.innerHTML = "Thank you for participating!"
 	form.style = 'display:none'

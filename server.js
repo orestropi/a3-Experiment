@@ -7,6 +7,7 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const dotenv =  require('dotenv');
+const Data = require('/model/Data');
 
 
 // make all the files in 'views' available
@@ -51,7 +52,22 @@ app.get("/", (request, response) => {
 //   // express helps us take JS objects and send them as JSON
 //   response.json(dreams);
 // });
+app.post("/newData", async (req, res) => {
+  // express helps us take JS objects and send them as JSON
+  console.log(req.body)
 
+  const data = new Data({
+    participantID: req.body.participantID,
+    trialN: req.body.trialN,
+    chartType: req.body.chartType,
+    actualPercent: req.body.actualPercent,
+    enteredPercent: req.body.enteredPercent
+});
+    const dataUser = await data.save();
+    console.log("User data created!");
+//Check what contacts user has} 
+res.send({username: userNameOfU})
+});
 
 
 // listen for requests :)
