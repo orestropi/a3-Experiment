@@ -17,6 +17,7 @@
 		let colorSet = ["#FF0000","#0000FF","#f2f2f2","#e2e2e2","#cecece",
 				        "#b4b4b4","#979797","#7a7a7a","#5f5f5f","#404040"];
 		let data = [];
+		let datalength = [];
 		let trial_num = 0;
 		let vis_type = "";
 		let trials = {};
@@ -24,7 +25,7 @@
 		{
 			let count = Math.floor(6 * Math.random() + 5);
 			data = [count];
-			for(i = 0 ; i < count ; i++) { data[i] = 15 + Math.floor(Math.random() * 85); }
+			for(i = 0 ; i < count ; i++) { data[i] = 15 + Math.floor(Math.random() * 85); datalength[i]=i;}
 			return data;
 		}
 		function remove_chart()
@@ -60,9 +61,39 @@
 			var y_axis = d3.axisLeft(y_scale).ticks(1).tickFormat(d => "");
 			svg.append("g").attr("transform", "translate(40,40)").call(y_axis);
 		}
-        function create_box_plot(data)
+        function create_line_plot(data)
         {
-            //placeholder for now
+            vis_type = "Line";
+			var svg = d3.select("svg"), width = svg.attr("width")-40, height = svg.attr("height")-40;
+			var y = d3.scaleLinear().domain([0, 100]).range([220, 0]).nice();
+			svg.append("g")
+				.attr("transform", "translate(40,40)")
+				.call(d3.axisLeft(y).ticks(5).tickFormat(d => ""));
+			
+			var x = d3.scaleLinear()
+				.domain(d3.extent(data, function(d,i) { return i; }))
+				.range([ 0, width ]);
+			
+
+			//line
+			svg.append("path")
+				.datum(data)
+				.attr("fill", "none")
+				.attr("stroke", "black")
+				.attr("stroke-width", 2)
+				.attr("d", d3.line()
+					.x(function(d, i) { return 40 + 20 * i + 5 * (i + 1); })
+					.y(function(d) { return 40+y(100-d) }));
+			//dot
+			svg.selectAll("myCircles")
+				.data(data)
+				.enter()
+				.append("circle")
+					.attr("fill", function(d, i) { return colorSet[i]; })
+					.attr("stroke", "none")
+					.attr("cx", function(d,i) { return 40 + 20 * i + 5 * (i + 1); })
+					.attr("cy", function(d) { return 40+y(100-d) })
+					.attr("r", 5);
         }
 		function calculate_ans()
 		{
@@ -92,10 +123,10 @@
 			}
 			remove_chart();
 			data = make_data();
-			let decider = Math.floor(Math.random() * 2); //update this to be * 3 when we have box plot in here
+			let decider = Math.floor(Math.random() * 3); //update this to be * 3 when we have box plot in here
 			if( decider == 0 ) { create_pie_chart(data); }
 			if( decider == 1 ) { create_bar_chart(data); }
-            //if( decider == 2 ) { create_box_plot(data); } uncomment when box plots are implemented
+            if( decider == 2 ) { create_line_plot(data); } //uncomment when box plots are implemented
 		}
 		new_chart();
 	</script>
