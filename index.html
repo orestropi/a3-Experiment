@@ -95,26 +95,26 @@
 			let decider = Math.floor(Math.random() * 2); //update this to be * 3 when we have box plot in here
 			if( decider == 0 ) { create_pie_chart(data); }
 			if( decider == 1 ) { create_bar_chart(data); }
-            //if( decider == 2 ) { create_box_plot(data); } uncomment when box plots are implemented
+            	//	if( decider == 2 ) { create_box_plot(data); } uncomment when box plots are implemented
 		}
 		new_chart();
 	</script>
 	<script>
 		function sendData(participantID, trialN, chartType, actualPercent, enteredPercent) {
-	json = { participantID: participantID, trialN: trialN, chartType: chartType, actualPercent: actualPercent, enteredPercent: enteredPercent},
-	body = JSON.stringify(json);
-fetch('/newData', {
-	   method: 'POST',
-	   headers: {
-			   'Accept': 'application/json, text/plain, */*',
-			   'Content-Type': 'application/json'
-			 },
-	   body: body
-	 })
-	 .then(res => res) // parse the JSON from the server
-	 .then(data => {
-	   });
-}
+			json = { participantID: participantID, trialN: trialN, chartType: chartType, actualPercent: actualPercent, enteredPercent: enteredPercent},
+			body = JSON.stringify(json);
+			fetch('/newData', {
+	  			method: 'POST',
+	   			headers: {
+					 'Accept': 'application/json, text/plain, */*',
+					 'Content-Type': 'application/json'
+				},
+		   		body: body
+	 		})
+	 		.then(res => res) // parse the JSON from the server
+			.then(data => {
+	   		});
+		}
 	</script>
 	<br><br>
 	<form name="input" action="javascript:void(null)">
