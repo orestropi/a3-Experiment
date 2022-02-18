@@ -5,10 +5,8 @@
 	<script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-	<header>
-		<h2> Two values in the graph have color. </h2>
-		<h2> What do you think the percent of the smaller value to the larger value is? </h2>
-		<h3> e.g. If you think the smaller one is exactly 1/2 of the bigger one, input "50" </h3>
+	<header id="header">
+		<h2> Welcome! Please enter a user ID to continue: </h2>
 	</header>
 	<div id ="vis">
 		<svg width="300" height="300" radius="140"> </svg>
@@ -22,6 +20,7 @@
 		let trials = {};
 		const trials_per_chart_type = 1;
 		let completed_trials = [0,0,0];
+		let participant_id = false;
 		function make_data()
 		{
 			let count = Math.floor(6 * Math.random() + 5);
@@ -107,20 +106,22 @@
 		}
 		function submit_vals(input)
 		{
-			trials[trial_num] = {};
-			trials[trial_num]["TrialNum"] = (trial_num + 1);
-			trials[trial_num]["Vis"] = vis_type;
-			trials[trial_num]["TruePercent"] = calculate_ans();
-			trials[trial_num]["ReportedPercent"] = input;
+			// TODO: replace these 7 lines:
+				trials[trial_num] = {};
+				trials[trial_num]["ParticipantID"] = participant_id;
+				trials[trial_num]["TrialNum"] = (trial_num + 1);
+				trials[trial_num]["Vis"] = vis_type;
+				trials[trial_num]["TruePercent"] = calculate_ans();
+				trials[trial_num]["ReportedPercent"] = input;
+				console.log(trials[trial_num]);
+			// with a sendData call
 			trial_num++;
 		}
 		function show_complete_message(input)
 		{
-			document.getElementById("completemessage").innerHTML = "You finished! Congratulations!";
+			document.getElementById("header").innerHTML = "<h2> You finished! Congratulations! </h2>";
 			document.getElementById("form").remove();
 		}
-		
-		
 		function new_chart()
 		{
 			let input = document.getElementById("input");
@@ -140,7 +141,6 @@
 					--unfinished_types;
 				}
 			}
-			
 			if (unfinished_types == 0)
 			{
 				show_complete_message();
@@ -167,7 +167,6 @@
 					}
 					else
 					{ console.log("Tried to create a plot of the first unfinished type, but all three types are finished."); }
-					
 				}
 				else if (decider == 1)
 				{
@@ -197,7 +196,29 @@
 				else { console.log("Invalid plot type"); }
 			}
 		}
-		new_chart();
+		function onButtonPress()
+		{
+			if (participant_id === false)
+			{
+				// Get participant ID
+				let input = document.getElementById("input");
+				if(input.value.length > 0)
+				{
+					participant_id = input.value;
+					document.getElementById("input").value = '';
+					
+					new_chart();
+					
+					// Set up document
+					document.getElementById("header").innerHTML = '<h2> Two values in the graph have color. </h2>		<h2> What do you think the percent of the smaller value to the larger value is? </h2>		<h3> e.g. If you think the smaller one is exactly 1/2 of the bigger one, input "50" </h3>';
+				}
+				// If the user didn't enter a participant ID yet, don't generate a chart yet
+			}
+			else
+			{
+				new_chart();
+			}
+		}
 		function sendData(participantID, trialN, chartType, actualPercent, enteredPercent) {
 			json = { participantID: participantID, trialN: trialN, chartType: chartType, actualPercent: actualPercent, enteredPercent: enteredPercent},
 			body = JSON.stringify(json);
@@ -218,7 +239,7 @@
 	<form name="input" id="form" action="javascript:void(null)">
 		<label for="input">Input:</label>
 		<input type="text" id="input" name="input">
-		<input type="submit" value="Submit" onclick="new_chart()"/><br/>
+		<input type="submit" value="Submit" onclick="onButtonPress()"/><br/>
 	</form>
 	<h1 id="completemessage"> </h1>
 	</div>
