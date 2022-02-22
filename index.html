@@ -18,7 +18,7 @@
 		let trial_num = 0;
 		let vis_type = "";
 		let trials = {};
-		const trials_per_chart_type = 1;
+		const trials_per_chart_type = 20;
 		let completed_trials = [0,0,0];
 		let participant_id = false;
 		function make_data()
@@ -61,20 +61,17 @@
 			var y_axis = d3.axisLeft(y_scale).ticks(1).tickFormat(d => "");
 			svg.append("g").attr("transform", "translate(40,40)").call(y_axis);
 		}
-        function create_line_plot(data)
-        {
-            vis_type = "Line";
+        	function create_line_plot(data)
+        	{
+            		vis_type = "Line";
 			var svg = d3.select("svg"), width = svg.attr("width")-40, height = svg.attr("height")-40;
 			var y = d3.scaleLinear().domain([0, 100]).range([220, 0]).nice();
 			svg.append("g")
 				.attr("transform", "translate(40,40)")
 				.call(d3.axisLeft(y).ticks(5).tickFormat(d => ""));
-			
 			var x = d3.scaleLinear()
 				.domain(d3.extent(data, function(d,i) { return i; }))
 				.range([ 0, width ]);
-			
-
 			//line
 			svg.append("path")
 				.datum(data)
@@ -94,7 +91,7 @@
 					.attr("cx", function(d,i) { return 40 + 20 * i + 5 * (i + 1); })
 					.attr("cy", function(d) { return 40+y(100-d) })
 					.attr("r", 5);
-        }
+        	}
 		function calculate_ans()
 		{
 			let val1 = data[0];
@@ -121,7 +118,7 @@
 		{
 			document.getElementById("header").innerHTML = "<h2> You finished! Congratulations! </h2>";
 			document.getElementById("form").remove();
-			for( i = 0 ; i < trials.length ; i++ )
+			for( i = 0 ; i <= trials_num ; i++ )
 			{
 				let trialN = trials[i].TrialNum;
 				let chartType = trials[i].Vis;
