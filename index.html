@@ -103,29 +103,13 @@
 		}
 		function submit_vals(input)
 		{
-			// TODO: replace these 7 lines:
-				trials[trial_num] = {};
-				trials[trial_num]["ParticipantID"] = participant_id;
-				trials[trial_num]["TrialNum"] = (trial_num + 1);
-				trials[trial_num]["Vis"] = vis_type;
-				trials[trial_num]["TruePercent"] = calculate_ans();
-				trials[trial_num]["ReportedPercent"] = input;
-				console.log(trials[trial_num]);
-			// with a sendData call
+			sendData(participant_id, (trial_num + 1), vis_type, calculate_ans(), input);
 			trial_num++;
 		}
 		function show_complete_message(input)
 		{
 			document.getElementById("header").innerHTML = "<h2> You finished! Congratulations! </h2>";
 			document.getElementById("form").remove();
-			for( i = 0 ; i <= trial_num ; i++ )
-			{
-				let trialN = trials[i]["TrialNum"];
-				let chartType = trials[i]["Vis"];
-				let actualPercent = trials[i]["TruePercent"];
-				let enteredPercent = trials[i]["ReportedPercent"];
-				sendData(participant_id, trialN, chartType, actualPercent, enteredPercent);
-			}
 		}
 		function new_chart()
 		{
