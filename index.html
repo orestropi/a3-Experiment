@@ -120,10 +120,10 @@
 			document.getElementById("form").remove();
 			for( i = 0 ; i <= trial_num ; i++ )
 			{
-				let trialN = trials[i][TrialNum];
-				let chartType = trials[i][Vis];
-				let actualPercent = trials[i][TruePercent];
-				let enteredPercent = trials[i][ReportedPercent];
+				let trialN = trials[i]["TrialNum"];
+				let chartType = trials[i]["Vis"];
+				let actualPercent = trials[i]["TruePercent"];
+				let enteredPercent = trials[i]["ReportedPercent"];
 				sendData(participant_id, trialN, chartType, actualPercent, enteredPercent);
 			}
 		}
