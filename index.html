@@ -12,8 +12,9 @@
 		<svg width="300" height="300" radius="140"> </svg>
 	<script type="text/javascript">
 		let svg = d3.select("svg");
-		let colorSet = ["#FF0000","#0000FF","#f2f2f2","#e2e2e2","#cecece",
-				        "#b4b4b4","#979797","#7a7a7a","#5f5f5f","#404040"];
+		/*let colorSet = ["#FF0000","#0000FF","#f2f2f2","#e2e2e2","#cecece",
+				        "#b4b4b4","#979797","#7a7a7a","#5f5f5f","#404040"];*/
+		let colorSet = ["#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff"]
 		let data = [];
 		let trial_num = 0;
 		let vis_type = "";
@@ -40,12 +41,25 @@
 			var pie = d3.pie();
 			var arc = d3.arc().innerRadius(0).outerRadius(140);
 			var arcs = g.selectAll("arc").data(pie(data)).enter().append("g");
-			arcs.append("path").attr("fill", function(data, i) {
-				let value = data.data;
-				return colorSet[i]; })
+			arcs.append("path").attr("fill", "white")
 				.style("stroke", "black")
 				.style("stroke-width", 2)
 				.attr("d", arc);
+			// Dot adding code based on number adding code from https://www.geeksforgeeks.org/d3-js-pie-function/
+			arcs.append("circle")
+				.attr("transform",(d)=>{ 
+                    return "translate("+ 
+                    arc.centroid(d) + ")"; 
+				})
+				.attr("r", 2.5)
+				.style("stroke", "none")
+				.style("fill", (d,i) => {
+					if (i <= 1) {
+						return "black";
+					} else {
+						return "none";
+					}
+				});
 		}
 		function create_bar_chart(data)
 		{
@@ -53,16 +67,29 @@
 			let y_scale = d3.scaleLinear().domain([0, 100]).range([220, 0]).nice();
 			const point = svg.selectAll("rect").data(data).join("rect")
 				.style("stroke", "black")
-				.attr("fill", function(d, i) { return colorSet[i]; })
+				.attr("fill", "white")
 				.attr("x", function(d, i) { return 40 + 20 * i + 5 * (i + 1); })
 				.attr("y", function(d) { return 40 + y_scale(d); })
 				.attr("width", 20)
 				.attr("height", function(d) { return y_scale(100 - d); });
 			var y_axis = d3.axisLeft(y_scale).ticks(1).tickFormat(d => "");
 			svg.append("g").attr("transform", "translate(40,40)").call(y_axis);
+			const dots = svg.selectAll("circle").data(data).join("circle")
+				.style("stroke", "none")
+				.attr("r", 2.5)
+				.attr("cx", function(d, i) { return 50 + 20 * i + 5 * (i + 1); })
+				.attr("cy", function(d) { return 40 + y_scale(d/2); })
+				.style("fill", (d,i) => {
+					if (i <= 1) {
+						return "black";
+					} else {
+						return "none";
+					}
+				});
 		}
-        	function create_line_plot(data)
-        	{vis_type = "Line";
+        function create_line_plot(data)
+        {
+			vis_type = "Line";
 			var svg = d3.select("svg"), width = svg.attr("width")-40, height = svg.attr("height")-40;
 			var y = d3.scaleLinear().domain([0, 100]).range([220, 0]).nice();
 			svg.append("g")
@@ -85,11 +112,26 @@
 				.data(data)
 				.enter()
 				.append("circle")
-					.attr("fill", function(d, i) { return colorSet[i]; })
-					.attr("stroke", "none")
+					.attr("fill", "white")
+					.attr("stroke", "black")
 					.attr("cx", function(d,i) { return 40 + 20 * i + 5 * (i + 1); })
 					.attr("cy", function(d) { return 40+y(d) })
 					.attr("r", 5);
+			svg.selectAll("smolCircles")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("stroke", "none")
+				.attr("cx", function(d,i) { return 40 + 20 * i + 5 * (i + 1); })
+				.attr("cy", function(d) { return 40+y(d) })
+				.attr("r", 2.5)
+				.style("fill", (d,i) => {
+					if (i <= 1) {
+						return "black";
+					} else {
+						return "none";
+					}
+				});
         	}
 		function calculate_ans()
 		{
