@@ -61,7 +61,8 @@ app.post("/newData", async (req, res) => {
     trialN: req.body.trialN,
     chartType: req.body.chartType,
     actualPercent: req.body.actualPercent,
-    enteredPercent: req.body.enteredPercent
+    enteredPercent: req.body.enteredPercent,
+    error: req.body.error
 });
     const dataUser = await data.save();
     console.log("User data created!");

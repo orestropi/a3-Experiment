@@ -102,7 +102,7 @@
 		}
 		function submit_vals(input)
 		{
-			sendData(participant_id, (trial_num + 1), vis_type, calculate_ans(), input);
+			sendData(participant_id, (trial_num + 1), vis_type, calculate_ans(), input, Math.log2(Math.abs(calculate_ans() - input) + .125));
 			trial_num++;
 		}
 		function show_complete_message(input)
@@ -207,8 +207,8 @@
 				new_chart();
 			}
 		}
-		function sendData(participantID, trialN, chartType, actualPercent, enteredPercent) {
-			json = { participantID: participantID, trialN: trialN, chartType: chartType, actualPercent: actualPercent, enteredPercent: enteredPercent},
+		function sendData(participantID, trialN, chartType, actualPercent, enteredPercent, error) {
+			json = { participantID: participantID, trialN: trialN, chartType: chartType, actualPercent: actualPercent, enteredPercent: enteredPercent, error: error},
 			body = JSON.stringify(json);
 			fetch('/newData', {
 	  			method: 'POST',

@@ -22,6 +22,10 @@ const userDataSchema = new mongoose.Schema({
         type: String,
         max: 1024,
     },
+    error:{
+        type: String,
+        max: 1024,
+    },
     date:{
         type: Date,
         default: Date.now
