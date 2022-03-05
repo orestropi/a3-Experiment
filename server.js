@@ -67,7 +67,7 @@ app.post("/newData", async (req, res) => {
     const dataUser = await data.save();
     console.log("User data created!");
 //Check what contacts user has} 
-res.send({username: userNameOfU})
+res.send({error: req.body.error})
 });
 
 
