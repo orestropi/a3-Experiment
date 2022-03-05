@@ -160,6 +160,11 @@
 				submit_vals(input.value);
 				document.getElementById("input").value = '';
 			}
+			else if (data.length > 0)
+			{
+				return;
+			}
+			
 			remove_chart();
 			data = make_data();
 			
