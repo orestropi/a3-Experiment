@@ -150,6 +150,7 @@
 		function show_complete_message(input)
 		{
 			document.getElementById("header").innerHTML = "<h2> You finished! Congratulations! </h2>";
+			document.getElementById("counter").remove();
 			document.getElementById("form").remove();
 		}
 		function new_chart()
@@ -182,6 +183,7 @@
 			}
 			else
 			{
+				update_displayed_counter();
 				let decider = Math.floor(Math.random() * unfinished_types);
 				if (decider == 0)
 				{
@@ -254,6 +256,11 @@
 				new_chart();
 			}
 		}
+		
+		function update_displayed_counter() {
+			document.getElementById("counter").innerHTML = "Chart " + trial_num + "/" + (3*trials_per_chart_type);
+		}
+		
 		function sendData(participantID, trialN, chartType, actualPercent, enteredPercent, error) {
 			json = { participantID: participantID, trialN: trialN, chartType: chartType, actualPercent: actualPercent, enteredPercent: enteredPercent, error: error},
 			body = JSON.stringify(json);
@@ -270,7 +277,9 @@
 	   		});
 		}
 	</script>
-	<br><br>
+	<br>
+	<h3 id="counter"> </h3>
+	<br>
 	<form name="input" id="form" action="javascript:void(null)">
 		<label for="input">Input:</label>
 		<input type="text" id="input" name="input">
