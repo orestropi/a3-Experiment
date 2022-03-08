@@ -64,7 +64,7 @@ To compensate, they came up with a logarithmic scale for error with this equatio
 - **body-parser**: Used bodyparser to easily parse JSON data being passed from the client to the server.
 
 ### Design Achievements
-- We added a counter to tell participants how many charts are left.
+- We added a counter to tell participants how many questions they had completed and how many were remaining
 - Consistent chart design and sizing.
 - Explored how different color can effect graphs but later returned to comparison with dots. 
 - We added our to dots to the middle of the graphs, while this differs from Cleveland and McGills example, it provided a clearer comparison and improved the users' grphical perception of the object. 
