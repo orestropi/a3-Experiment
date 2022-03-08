@@ -1,5 +1,4 @@
 Link to website, hosted on glitch:https://a3experiment.glitch.me/
-Link to website, hosted on gh-pages:
 
 
 Experiment Results In Order of Performance
