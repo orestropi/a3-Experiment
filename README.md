@@ -103,4 +103,12 @@ GitHub Details
 - Name your submission using the following scheme: 
 ```
 a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
+
 ```
+## Technical Achievements
+- **Server**: Used Node.JS server with express.JS framework.
+- **Database**: Used MongoDB and mangoose to send data to a mongoDB server.
+- **Database Tools**: First time using MongoDB tools. Learned how to generate CSV file with selective data fields using the tools. This had to be downloaded seperatly and be set as a root path so it could be used in my terminal.
+- **First time using Datawrapper**:
+### Design Achievements
+
