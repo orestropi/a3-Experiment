@@ -7,7 +7,7 @@ Experiment Results In Order of Performance
 
 
 
-![first chart](./bootstrappedlog2error~distribution.png)
+![first chart](./bootstrappedlog2error~~distribution.png)
 
 ![first chart](./errorgraph.png)
 
