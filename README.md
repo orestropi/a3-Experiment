@@ -107,12 +107,14 @@ a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
 ```
 ## Technical Achievements
 - **Server**: Used Node.JS server with express.JS framework.
--![image](https://user-images.githubusercontent.com/73619173/157148820-788b5521-9d7c-4b8e-bcc7-b427c1b44618.png)
+![image](https://user-images.githubusercontent.com/73619173/157148820-788b5521-9d7c-4b8e-bcc7-b427c1b44618.png)
 ![image](https://user-images.githubusercontent.com/73619173/157148850-f1acfac2-9a38-493a-adcc-eba49df1054b.png)
 - **Database**: Used MongoDB and mangoose to send data to a mongoDB server.
 - ![image](https://user-images.githubusercontent.com/73619173/157149150-aeb8f4de-3136-4e70-a092-92c6e3199d3c.png)
 
 - **Database Tools**: First time using MongoDB tools. Learned how to generate CSV file with selective data fields using the tools. This had to be downloaded seperatly and be set as a root path so it could be used in my terminal.
-- **dotenv**:Usedto protective sensitive data information
+- **dotenv**:Used to protective sensitive data information, such as admin username and password.
+![image](https://user-images.githubusercontent.com/73619173/157149665-94c4d5c1-50b9-4c3c-bbce-85f93bbd08d4.png)
+- **body-parser**:Used bodyparser to easily parse JSON data being passed from the client to the server.
 ### Design Achievements
 
