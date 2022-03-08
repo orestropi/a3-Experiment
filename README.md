@@ -1,3 +1,6 @@
+Link to website, hosted on glitch:
+Link to website, hosted on gh-pages:
+
 
 Experiment Results In Order of Performance
 ---
