@@ -19,7 +19,7 @@ Pie
 
 Results
 ---
-![first chart](./bootstrappedlog2error~~distribution.png)
+![first chart](./bootstrappedlog2errordistribution.png)
 
 ![first chart](./errorgraph.png)
 
