@@ -33,6 +33,8 @@ error graph
 ---
 ![first chart](./errorgraph.png)
 
+As you can see here, our bar chart results are quite similar to the Cleveland and McGill results. However, our pie chart results were slightly worse than Cleveland and McGill with a larger spread as well. Looking at their methodology, it looks like they labeled their slices with letters at each slice's midpoint and their slices were all pretty large. These factors could have led to improved graphical perception compared to our study where we only limited the size of our pie chart slices when they became close to imperceptible.
+
 bootstrapped log2 error distribution
 ---
 
