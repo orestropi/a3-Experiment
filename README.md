@@ -3,7 +3,7 @@ Experiment Information
 
 Link to website, hosted on glitch: https://a3experiment.glitch.me/
 
-This application used d3.js and html in the front-end and node.js, express.js, and mongoose in the back-end. We utilized html to create the survey and transition between different graphs that were made using d3. During the survey, the plots were each marked with 2 dots, signifying which parts of the chart we wanted to compare. The data was collected during the survey and sent to the server when the survey was submitted. After the data was sent to the server using a POST request, we parsed the data and put it in a mongoDB server. Then, we used mongoose's db tools to convert it into a csv file so as to analyze the results using both the bootstrapped log2 error distribution used by Cleveland and McGill and a graph with normal error. 
+This application used d3.js and html in the front-end and node.js, express.js, and mongoose in the back-end. We utilized html to create the survey and transition between different graphs that were made using d3. During the survey, the plots were each marked with 2 dots, signifying which parts of the chart we wanted to compare. The data was collected during the survey and sent to the server when the survey was submitted. After the data was sent to the server using a POST request, we parsed the data and put it in a mongoDB server. Then, we used mongoDB tools to convert it into a csv file so as to analyze the results using both the bootstrapped log2 error distribution used by Cleveland and McGill and a graph with normal error. 
 
 Experiment Results In Order of Performance
 ===
