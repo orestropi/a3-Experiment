@@ -3,7 +3,7 @@ Experiment Information
 
 Link to website, hosted on glitch: https://a3experiment.glitch.me/
 
-Description: This was a appliction using d3.js and html in the front-end and node.js, express.js, and mongoose in the back-end. We utilized html to create the survey and transition between different graphs that were made using d3. During the survey, the plots were each marked with 2 dots, signifying which parts of the chart we want to compare. The data is collected during the survey and sent to the server when the survey is submitted. After the data is sent to the server using a POST request we parsed the data and put it in a mongoDB server. Then we used their db tools to convert it into a csv file that allowed us to analyze the results using the bootstrapped log2 error distribution used by Cleveland and McGill. As well as a graph with normal error. 
+This application used d3.js and html in the front-end and node.js, express.js, and mongoose in the back-end. We utilized html to create the survey and transition between different graphs that were made using d3. During the survey, the plots were each marked with 2 dots, signifying which parts of the chart we wanted to compare. The data was collected during the survey and sent to the server when the survey was submitted. After the data was sent to the server using a POST request, we parsed the data and put it in a mongoDB server. Then, we used mongoose's db tools to convert it into a csv file so as to analyze the results using both the bootstrapped log2 error distribution used by Cleveland and McGill and a graph with normal error. 
 
 Experiment Results In Order of Performance
 ===
@@ -12,19 +12,19 @@ Bar
 ---
 ![first chart](./bar2.png)
 
-Our bar chart was our best performing chart. This is similar to Cleveland & McGill's results, as it is easiest to compare two bars height as oppose to other visualizations.
+Our bar chart was our best performing chart. This is similar to Cleveland & McGill's results, as it is easier to compare two bars height as opposed to other visualizations.
 
 Line
 ---
 ![first chart](./line2.png)
 
-Our line chart was worse in performance compared to the bar chart, but beat out the pie charts by a significant margin. This is resonable, as simialr to the bar chart, line chart compares the data vertically. 
+Our line chart was worse in performance compared to the bar chart, but beat out the pie chart by a significant margin. This is resonable, as similarly to the bar chart, the line chart compares the data vertically. 
 
 Pie
 ---
 ![first chart](./pie2.png)
 
-Box plots were the worst performing chart out of the three. This could be for a couple reasons, the first theory being the lack of knowledge about how to read a slice of a circle.  Secondly, pie charts could overall be harder to compare sizes due to the lack of allignment between each slice.(The slices werent always next to eachother, creating different visual effect.) This caused for a wide variability in answers, creating more outliers compared to the other two charts. Thirdly, as the slice of chart can be oriented different, it creates very different visual effects causing the subject to become confused to the true size of the shape. 
+Box plots were the worst performing chart out of the three. This could be for a couple reasons, the first theory being the lack of knowledge about how to read a slice of a circle.  Secondly, pie charts could overall be harder to compare sizes due to the lack of allignment between each slice. (The slices weren't always next to each other, creating a different visual effect.) This caused for a wide variability in answers, creating more outliers than the other two charts. Thirdly, as a slice of the chart can be oriented differently, it creates very different visual effects causing the subject to become confused to the true size of the shape. 
 
 Results in detailed graphs
 ===
@@ -33,7 +33,7 @@ error graph
 ---
 ![first chart](./errorgraph.png)
 
-Our bar chart results are very similar to the Cleveland and McGill results, as you can see. Our pie chart results, on the other hand, were marginally poorer than Cleveland and McGill, with a greater spread. According to their technique, they labeled their slices with letters at the halfway of each slice, and their slices were all rather large. In contrast to our study, where we only reduced the size of our pie chart segments when they were nearly unnoticeable, these characteristics could have improved graphical perception.
+Our bar chart results are very similar to the Cleveland and McGill results, as you can see. Our pie chart results, on the other hand, were marginally poorer than Cleveland and McGill, with a greater spread. According to their technique, they labeled their slices with letters at the halfway of each slice, and their slices were all rather large. In contrast, in our study we only reduced the size of our pie chart segments when they were nearly unnoticeable. These characteristics could have improved graphical perception.
 
 bootstrapped log2 error distribution
 ---
@@ -56,7 +56,7 @@ To compensate, they came up with a logarithmic scale for error with this equatio
 ![image](https://user-images.githubusercontent.com/73619173/157149150-aeb8f4de-3136-4e70-a092-92c6e3199d3c.png)
 ![image](https://user-images.githubusercontent.com/73619173/157150498-909b116d-e2e8-4cad-9f0e-8fff2a73d405.png)
 
-- **Database Tools**: First time using MongoDB tools. Learned how to generate CSV file with selective data fields using the tools. This had to be downloaded seperatly and be set as a root path so it could be used in my terminal.
+- **Database Tools**: First time using MongoDB tools. Learned how to generate CSV file with selective data fields using the tools. This had to be downloaded separately and set as a root path so it could be used in my terminal.
 
 - **dotenv**: Used to protect sensitive data information, such as admin username and password.
 ![image](https://user-images.githubusercontent.com/73619173/157149665-94c4d5c1-50b9-4c3c-bbce-85f93bbd08d4.png)
@@ -66,5 +66,5 @@ To compensate, they came up with a logarithmic scale for error with this equatio
 ### Design Achievements
 - We added a counter to tell participants how many questions they had completed and how many were remaining
 - When creating the chart, we kept in mind the need for consistency between different charts, thus, we have a consistent chart design and sizing.
-- Explored how different color can effect graphs but later returned to comparison with dots. 
-- We added our to dots to the middle of the graphs, while this differs from Cleveland and McGills example, it provided a clearer comparison and improved the users' grphical perception of the object. 
+- Explored how different color can affect graphs but later returned to comparison with dots. 
+- We added our to dots to the middle of the graphs; while this differs from Cleveland and McGill's example, it provided a clearer comparison and improved the users' graphical perception of the object. 
