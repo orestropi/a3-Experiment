@@ -10,15 +10,15 @@ Experiment Results In Order of Performance
 
 Bar
 ---
-![first chart](./bar.png)
+![first chart](./bar2.png)
 
 Line
 ---
-![first chart](./line.png)
+![first chart](./line2.png)
 
 Pie
 ---
-![first chart](./pie.png)
+![first chart](./pie2.png)
 
 
 Results in detailed graphs
