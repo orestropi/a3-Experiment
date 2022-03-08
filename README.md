@@ -12,13 +12,13 @@ Bar
 ---
 ![first chart](./bar2.png)
 
-Our bar chart was our best performing chart. This is similar to Cleveland & McGill's results, as it is easier to compare two bars height as opposed to other visualizations.
+Our bar chart was our best performing chart. This is similar to Cleveland & McGill's results, as it is easier to compare two bars' height as opposed to other visualizations.
 
 Line
 ---
 ![first chart](./line2.png)
 
-Our line chart was worse in performance compared to the bar chart, but beat out the pie chart by a significant margin. This is resonable, as similarly to the bar chart, the line chart compares the data vertically. 
+Our line chart was worse in performance compared to the bar chart, but beat out the pie chart by a significant margin. This is reasonable, as similarly to the bar chart, the line chart compares the data vertically. 
 
 Pie
 ---
