@@ -10,17 +10,20 @@ Experiment Results In Order of Performance
 
 Bar
 ---
-![first chart](./bar2.png) <br/>
+![first chart](./bar2.png)
+
 Our bar chart was our best performing chart. This is similar to Cleveland & McGill's results, as it is easiest to compare two bars height as oppose to other visualizations.
 
 Line
 ---
 ![first chart](./line2.png)
+
 Our line chart was worse in performance compared to the bar chart, but beat out the pie charts by a significant margin. This is resonable, as simialr to the bar chart, line chart compares the data vertically. 
 
 Pie
 ---
 ![first chart](./pie2.png)
+
 Box plots were the worst performing chart out of the three. This could be for a couple reasons, the first theory being the lack of knowledge about how to read a slice of a circle.  Secondly, pie charts could overall be harder to compare sizes due to the lack of allignment between each slice.(The slices werent always next to eachother, creating different visual effect.) This caused for a wide variability in answers, creating more outliers compared to the other two charts. Thirdly, as the slice of chart can be oriented different, it creates very different visual effects causing the subject to become confused to the true size of the shape. 
 
 Results in detailed graphs
