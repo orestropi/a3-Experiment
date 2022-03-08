@@ -144,7 +144,7 @@ GitHub Details
 - Name your submission using the following scheme: 
 ```
 a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
-
+```
 ---------------------------------------------------------Ending NOT PART OF FINAL README---------------------------------------------------------
 
 ## Technical Achievements
