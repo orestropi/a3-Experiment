@@ -24,7 +24,7 @@ Pie
 ---
 ![first chart](./pie2.png)
 
-Box plots were the worst performing chart out of the three. This could be for a couple reasons, the first theory being the lack of knowledge about how to read a slice of a circle.  Secondly, pie charts could overall be harder to compare sizes due to the lack of allignment between each slice. (The slices weren't always next to each other, creating a different visual effect.) This caused for a wide variability in answers, creating more outliers than the other two charts. Thirdly, as a slice of the chart can be oriented differently, it creates very different visual effects causing the subject to become confused to the true size of the shape. 
+Box plots were the worst performing chart out of the three. This could be for a couple reasons, the first theory being the lack of knowledge about how to read a slice of a circle.  Secondly, pie charts could overall be harder to compare sizes due to the lack of alignment between each slice. (The slices weren't always next to each other, creating a different visual effect.) This caused for a wide variability in answers, creating more outliers than the other two charts. Thirdly, as a slice of the chart can be oriented differently, it creates very different visual effects causing the subject to become confused to the true size of the shape. 
 
 Results in detailed graphs
 ===
@@ -52,7 +52,7 @@ To compensate, they came up with a logarithmic scale for error with this equatio
 ![image](https://user-images.githubusercontent.com/73619173/157148820-788b5521-9d7c-4b8e-bcc7-b427c1b44618.png)
 ![image](https://user-images.githubusercontent.com/73619173/157148850-f1acfac2-9a38-493a-adcc-eba49df1054b.png)
 
-- **Database**: Used MongoDB and mangoose to send data to a mongoDB database.
+- **Database**: Used MongoDB and mongoose to send data to a mongoDB database.
 ![image](https://user-images.githubusercontent.com/73619173/157149150-aeb8f4de-3136-4e70-a092-92c6e3199d3c.png)
 ![image](https://user-images.githubusercontent.com/73619173/157150498-909b116d-e2e8-4cad-9f0e-8fff2a73d405.png)
 
