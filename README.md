@@ -3,6 +3,7 @@ Experiment Information
 
 Link to website, hosted on glitch: https://a3experiment.glitch.me/
 
+Description: This was a appliction using d3.js and html in the front-end and node.js, express.js, and mongoose in the back-end. 
 
 Experiment Results In Order of Performance
 ===
