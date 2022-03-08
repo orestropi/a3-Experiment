@@ -10,7 +10,7 @@ Experiment Results In Order of Performance
 
 Bar
 ---
-![first chart](./bar2.png)
+![first chart](./bar2.png) <br/>
 Our bar chart was our best performing chart. This is similar to Cleveland & McGill's results, as it is easiest to compare two bars height as oppose to other visualizations.
 
 Line
