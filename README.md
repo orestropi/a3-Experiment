@@ -18,9 +18,12 @@ Pie
 ![first chart](./pie.png)
 
 
+Results
+---
 ![first chart](./bootstrappedlog2error~~distribution.png)
 
 ![first chart](./errorgraph.png)
+
 
 Assignment 3 - Replicating a Classic Experiment  
 ===
