@@ -18,10 +18,17 @@ Pie
 
 
 Results
+===
+
+error graph
+---
+![first chart](./errorgraph.png)
+
+bootstrapped log2 error distribution
 ---
 ![first chart](./bootstrappedlog2errordistribution.png)
 
-![first chart](./errorgraph.png)
+
 
 
 Assignment 3 - Replicating a Classic Experiment  
