@@ -42,6 +42,7 @@ To compensate, they came up with a logarithmic scale for error with this equatio
 
 
 ---------------------------------------------------------NOT PART OF FINAL README---------------------------------------------------------
+
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
