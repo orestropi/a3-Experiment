@@ -65,6 +65,6 @@ To compensate, they came up with a logarithmic scale for error with this equatio
 
 ### Design Achievements
 - We added a counter to tell participants how many questions they had completed and how many were remaining
-- Consistent chart design and sizing.
+- When creating the chart, we kept in mind the need for consistency between different charts, thus, we have a consistent chart design and sizing.
 - Explored how different color can effect graphs but later returned to comparison with dots. 
 - We added our to dots to the middle of the graphs, while this differs from Cleveland and McGills example, it provided a clearer comparison and improved the users' grphical perception of the object. 
