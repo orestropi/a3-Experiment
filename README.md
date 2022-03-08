@@ -3,12 +3,18 @@ Link to website, hosted on gh-pages:
 
 
 Experiment Results In Order of Performance
----
+===
 
+Bar
+---
 ![first chart](./bar.png)
 
+Line
+---
 ![first chart](./line.png)
 
+Pie
+---
 ![first chart](./pie.png)
 
 
