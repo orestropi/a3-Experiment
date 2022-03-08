@@ -3,7 +3,7 @@ Experiment Information
 
 Link to website, hosted on glitch: https://a3experiment.glitch.me/
 
-Description: This was a appliction using d3.js and html in the front-end and node.js, express.js, and mongoose in the back-end. 
+Description: This was a appliction using d3.js and html in the front-end and node.js, express.js, and mongoose in the back-end. We ...(add front-end stuff). After the data is sent to the server using a POST request we parsed the data and put it in a mongoDB server. Then we used their db tools to convert it into a csv file that allowed to analyze the results using the bootstrapped log2 error distribution used by Cleveland and McGill. As well as a graph with normal error.
 
 Experiment Results In Order of Performance
 ===
@@ -30,11 +30,18 @@ error graph
 
 bootstrapped log2 error distribution
 ---
+
+__Log-base-2 or "cm-error"__: The true percent is the actual percentage of the smaller to the larger, while the reported percent is what participants reported. 
+Cleveland and McGill recognized that their analyses would be biased if they took `abs(ReportedPercent – TruePercent)` as their score for error. 
+To compensate, they came up with a logarithmic scale for error with this equation:
+
+![cleveland equation](img/cleveland-equation.png)
+
 ![first chart](./bootstrappedlog2errordistribution.png)
 
 
 
-
+---------------------------------------------------------NOT PART OF FINAL README---------------------------------------------------------
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
@@ -114,11 +121,7 @@ By the end of the study, Cleveland and McGill had amassed a large dataset that l
 
 ![cleveland table](img/cleveland-table.png)
 
-__Log-base-2 or "cm-error"__: The true percent is the actual percentage of the smaller to the larger, while the reported percent is what participants reported. 
-Cleveland and McGill recognized that their analyses would be biased if they took `abs(ReportedPercent – TruePercent)` as their score for error. 
-To compensate, they came up with a logarithmic scale for error with this equation:
 
-![cleveland equation](img/cleveland-equation.png)
 
 You’ll be implementing this error score as part of the lab. 
 (Hint: it’s not a trick question, this is just to familiarize you with the experiment protocol). 
@@ -141,7 +144,8 @@ GitHub Details
 ```
 a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
 
-```
+---------------------------------------------------------Ending NOT PART OF FINAL README---------------------------------------------------------
+
 ## Technical Achievements
 - **Server**: Used Node.JS server with express.JS framework.
 ![image](https://user-images.githubusercontent.com/73619173/157150750-cd4a0555-4b80-4170-9c5f-77688a41cbf7.png)
