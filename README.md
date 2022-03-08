@@ -5,6 +5,11 @@ Link to website, hosted on gh-pages:
 Experiment Results In Order of Performance
 ---
 
+![first chart](./bar.png)
+
+![first chart](./line.png)
+
+![first chart](./pie.png)
 
 
 ![first chart](./bootstrappedlog2error~~distribution.png)
